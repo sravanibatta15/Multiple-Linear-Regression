@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiple Linear Regression Predictor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #d4fc79, #96e6a1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 {
+            color: black;
+            margin-bottom: 20px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+            width: 300px;
+            text-align: center;
+        }
+        input[type="number"] {
+            width: 90%;
+            padding: 8px;
+            margin: 10px 0;
+            border: 1px solid gray;
+            border-radius: 8px;
+        }
+        input[type="submit"] {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+            color: darkblue;
+            font-weight: bold;
+        }
+        img {
+            margin-top: 20px;
+            max-width: 90%;
+            border-radius: 12px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiple Linear Regression Model</h1>
+    <form method="POST">
+        <label for="age">Enter Age:</label><br>
+        <input type="number" name="age" step="any" required><br>
+        <label for="experience">Enter Experience (Years):</label><br>
+        <input type="number" name="experience" step="any" required><br>
+        <input type="submit" value="Predict Income">
+    </form>
+
+    {% if prediction %}
+    <div class="result">Predicted Income: {{ prediction }}</div>
+    {% endif %}
+
+    {% if graph_url %}
+    <img src="{{ url_for('static', filename='graph.png') }}" alt="Prediction Graph">
+    {% endif %}
+</body>
+</html>
